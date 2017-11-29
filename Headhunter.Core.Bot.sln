@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Headhunter.Core.Bot", "Headhunter.Core.Bot\Headhunter.Core.Bot.csproj", "{BD34A721-D3D6-482C-8BF8-0F9893D6F16E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD34A721-D3D6-482C-8BF8-0F9893D6F16E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD34A721-D3D6-482C-8BF8-0F9893D6F16E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD34A721-D3D6-482C-8BF8-0F9893D6F16E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD34A721-D3D6-482C-8BF8-0F9893D6F16E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3781BF3F-AA5A-4C0F-B313-781EB1389563}
+	EndGlobalSection
+EndGlobal
