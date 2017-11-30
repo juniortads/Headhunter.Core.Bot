@@ -1,7 +1,9 @@
-﻿using Headhunter.Core.Bot.Models;
+﻿using Headhunter.Core.Bot.Dialogs.Interfaces;
+using Headhunter.Core.Bot.Models;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Headhunter.Core.Bot.Dialogs
@@ -10,9 +12,9 @@ namespace Headhunter.Core.Bot.Dialogs
     public class GreetingDialog : IDialog<IMessageActivity>
     {
         const string key_client_user_name = "Name";
-        private readonly HumanResourcesServiceDialog humanServiceDialog;
+        private readonly IBaseDialogForm<HumanResourcesService> humanServiceDialog;
 
-        public GreetingDialog(HumanResourcesServiceDialog humanServiceDialog)
+        public GreetingDialog(IBaseDialogForm<HumanResourcesService> humanServiceDialog)
         {
             this.humanServiceDialog = humanServiceDialog;
         }
@@ -46,7 +48,8 @@ namespace Headhunter.Core.Bot.Dialogs
             else
             {
                 await context.PostAsync($"Oi {userName}.");
-                context.Call(humanServiceDialog.Maker(), humanServiceDialog.AfterContinuation);
+                context.Call(humanServiceDialog.Build(), humanServiceDialog.ResumeAfter);
+                
             }
             //context.Wait(MessageReceivedAsync);
         }
