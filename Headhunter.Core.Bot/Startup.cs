@@ -1,7 +1,9 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Headhunter.Core.Bot.Dialogs;
+using Headhunter.Core.Bot.Dialogs.Interfaces;
 using Headhunter.Core.Bot.Infrastructure.Logger;
+using Headhunter.Core.Bot.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder.Dialogs;
@@ -37,6 +39,18 @@ namespace Headhunter.Core.Bot
             containerBuilder.Populate(services);
 
             containerBuilder.RegisterType<GreetingDialog>()
+                            .InstancePerDependency();
+
+            containerBuilder.RegisterType<HumanResourcesServiceDialog>()
+                            .As<IBaseDialogForm<HumanResourcesService>>()
+                            .InstancePerDependency();
+
+            containerBuilder.RegisterType<ContactUsDialog>()
+                            .As<IBaseDialogForm<Contact>>()
+                            .InstancePerDependency();
+
+            containerBuilder.RegisterType<CareersDialog>()
+                            .As<IBaseDialogCard>()
                             .InstancePerDependency();
 
             containerBuilder.RegisterType<ConversationLogger>()

@@ -1,6 +1,9 @@
-﻿using Microsoft.Bot.Builder.Dialogs;
+﻿using Headhunter.Core.Bot.Dialogs.Interfaces;
+using Headhunter.Core.Bot.Models;
+using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Headhunter.Core.Bot.Dialogs
@@ -9,11 +12,26 @@ namespace Headhunter.Core.Bot.Dialogs
     public class GreetingDialog : IDialog<IMessageActivity>
     {
         const string key_client_user_name = "Name";
+        private readonly IBaseDialogForm<HumanResourcesService> humanServiceDialog;
+
+        public GreetingDialog(IBaseDialogForm<HumanResourcesService> humanServiceDialog)
+        {
+            this.humanServiceDialog = humanServiceDialog;
+        }
 
         public async Task StartAsync(IDialogContext context)
         {
-            await context.PostAsync("Olá, eu sou John Bot");
-            context.Wait(MessageReceivedAsync);
+            var userName = String.Empty;
+
+            if (context.UserData.TryGetValue<string>(key_client_user_name, out userName))
+            {
+                await context.PostAsync($"Oi {userName}. Como posso te ajudar hoje?");
+            }
+            else
+            {
+                await context.PostAsync("Olá, eu sou John Bot");
+                context.Wait(MessageReceivedAsync);
+            }
         }
 
         private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> messageActivity)
@@ -38,9 +56,11 @@ namespace Headhunter.Core.Bot.Dialogs
             }
             else
             {
-                await context.PostAsync($"Oi {userName}. Como eu posso te ajudar hoje?");
+                await context.PostAsync($"Oi {userName}.");
+                context.Call(humanServiceDialog.Build(), humanServiceDialog.ResumeAfter);
+                
             }
-            context.Wait(MessageReceivedAsync);
+            //context.Wait(MessageReceivedAsync);
         }
 
         private static void SetUserName(IDialogContext context, string value)

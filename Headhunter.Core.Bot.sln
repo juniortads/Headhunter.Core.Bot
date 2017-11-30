@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Headhunter.Core.Bot", "Headhunter.Core.Bot\Headhunter.Core.Bot.csproj", "{BD34A721-D3D6-482C-8BF8-0F9893D6F16E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Headhunter.Core.Bot", "Headhunter.Core.Bot\Headhunter.Core.Bot.csproj", "{BD34A721-D3D6-482C-8BF8-0F9893D6F16E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Bot", "1 - Bot", "{1C02B9CB-6435-491A-954C-5BE69EC11C9D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Library", "2 - Library", "{9D3F981D-3B13-4CF5-96C8-CA6B9C988FE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
