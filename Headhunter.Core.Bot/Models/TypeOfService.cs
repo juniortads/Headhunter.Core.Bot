@@ -6,7 +6,7 @@ namespace Headhunter.Core.Bot.Models
     {
         [Describe("Carreiras")]
         Carreiras = 1,
-        [Describe("Outros Servicos")]
-        OutrosServicos = 2
+        [Describe("Fale Conosco")]
+        FaleConosco = 2
     }
 }

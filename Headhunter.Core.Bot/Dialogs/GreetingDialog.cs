@@ -21,8 +21,17 @@ namespace Headhunter.Core.Bot.Dialogs
 
         public async Task StartAsync(IDialogContext context)
         {
-            await context.PostAsync("Olá, eu sou John Bot");
-            context.Wait(MessageReceivedAsync);
+            var userName = String.Empty;
+
+            if (context.UserData.TryGetValue<string>(key_client_user_name, out userName))
+            {
+                await context.PostAsync($"Oi {userName}. Como posso te ajudar hoje?");
+            }
+            else
+            {
+                await context.PostAsync("Olá, eu sou John Bot");
+                context.Wait(MessageReceivedAsync);
+            }
         }
 
         private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> messageActivity)

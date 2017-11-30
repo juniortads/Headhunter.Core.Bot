@@ -45,6 +45,14 @@ namespace Headhunter.Core.Bot
                             .As<IBaseDialogForm<HumanResourcesService>>()
                             .InstancePerDependency();
 
+            containerBuilder.RegisterType<ContactUsDialog>()
+                            .As<IBaseDialogForm<Contact>>()
+                            .InstancePerDependency();
+
+            containerBuilder.RegisterType<CareersDialog>()
+                            .As<IBaseDialogCard>()
+                            .InstancePerDependency();
+
             containerBuilder.RegisterType<ConversationLogger>()
                             .Keyed<ConversationLogger>(FiberModule.Key_DoNotSerialize)
                             .As<IActivityLogger>()
