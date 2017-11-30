@@ -39,6 +39,9 @@ namespace Headhunter.Core.Bot
             containerBuilder.RegisterType<GreetingDialog>()
                             .InstancePerDependency();
 
+            containerBuilder.RegisterType<HumanResourcesServiceDialog>()
+                            .InstancePerDependency();
+
             containerBuilder.RegisterType<ConversationLogger>()
                             .Keyed<ConversationLogger>(FiberModule.Key_DoNotSerialize)
                             .As<IActivityLogger>()

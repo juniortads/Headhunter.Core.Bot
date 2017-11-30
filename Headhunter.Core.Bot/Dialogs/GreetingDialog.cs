@@ -1,4 +1,5 @@
-﻿using Microsoft.Bot.Builder.Dialogs;
+﻿using Headhunter.Core.Bot.Models;
+using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using System;
 using System.Threading.Tasks;
@@ -9,6 +10,12 @@ namespace Headhunter.Core.Bot.Dialogs
     public class GreetingDialog : IDialog<IMessageActivity>
     {
         const string key_client_user_name = "Name";
+        private readonly HumanResourcesServiceDialog humanServiceDialog;
+
+        public GreetingDialog(HumanResourcesServiceDialog humanServiceDialog)
+        {
+            this.humanServiceDialog = humanServiceDialog;
+        }
 
         public async Task StartAsync(IDialogContext context)
         {
@@ -38,9 +45,10 @@ namespace Headhunter.Core.Bot.Dialogs
             }
             else
             {
-                await context.PostAsync($"Oi {userName}. Como eu posso te ajudar hoje?");
+                await context.PostAsync($"Oi {userName}.");
+                context.Call(humanServiceDialog.Maker(), humanServiceDialog.AfterContinuation);
             }
-            context.Wait(MessageReceivedAsync);
+            //context.Wait(MessageReceivedAsync);
         }
 
         private static void SetUserName(IDialogContext context, string value)
