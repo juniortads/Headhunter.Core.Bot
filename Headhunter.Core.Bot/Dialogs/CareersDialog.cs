@@ -11,22 +11,11 @@ namespace Headhunter.Core.Bot.Dialogs
     [Serializable]
     public class CareersDialog : IBaseDialogCard
     {
-
-        /// <summary>
-        /// 1
-        /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
         public async Task StartAsync(IDialogContext context)
         {
             context.Wait(MessageReceivedAsync);
         }
-        /// <summary>
-        /// 2
-        /// </summary>
-        /// <param name="context"></param>
-        /// <param name="result"></param>
-        /// <returns></returns>
+
         public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
         {
             var reply = context.MakeMessage();
@@ -36,12 +25,7 @@ namespace Headhunter.Core.Bot.Dialogs
             await context.PostAsync(reply);
             context.Wait(this.MessageReceivedAsyncCardAction);
         }
-        /// <summary>
-        /// 3 
-        /// </summary>
-        /// <param name="context"></param>
-        /// <param name="result"></param>
-        /// <returns></returns>
+
         public async Task MessageReceivedAsyncCardAction(IDialogContext context, IAwaitable<IMessageActivity> result)
         {
             var message = await result;
@@ -58,12 +42,7 @@ namespace Headhunter.Core.Bot.Dialogs
                 context.Done(response);
             }
         }
-        /// <summary>
-        /// acabou tudo
-        /// </summary>
-        /// <param name="context"></param>
-        /// <param name="result"></param>
-        /// <returns></returns>
+
         public async Task MessageResumeAfter(IDialogContext context, IAwaitable<DialogResponse> result)
         {
             var message = await result;

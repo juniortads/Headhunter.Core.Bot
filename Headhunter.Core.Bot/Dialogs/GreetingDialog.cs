@@ -30,8 +30,8 @@ namespace Headhunter.Core.Bot.Dialogs
             else
             {
                 await context.PostAsync("Olá, eu sou John Bot");
-                context.Wait(MessageReceivedAsync);
             }
+            context.Wait(MessageReceivedAsync);
         }
 
         private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> messageActivity)
@@ -56,11 +56,8 @@ namespace Headhunter.Core.Bot.Dialogs
             }
             else
             {
-                await context.PostAsync($"Oi {userName}.");
                 context.Call(humanServiceDialog.Build(), humanServiceDialog.ResumeAfter);
-                
             }
-            //context.Wait(MessageReceivedAsync);
         }
 
         private static void SetUserName(IDialogContext context, string value)
