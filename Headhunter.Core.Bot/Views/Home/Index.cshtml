@@ -2,8 +2,31 @@
 @{
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html>
+<head>
+	<link href="https://cdn.botframework.com/botframework-webchat/latest/botchat.css" rel="stylesheet" />
+	<link rel="stylesheet" href="botchat.css" />
+	<link rel="stylesheet" href="botchat-fullwindow.css" />
+
+</head>
+<body>
+	<div id="bot" />
+	<script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script>
+	<script>
+      BotChat.App({
+        directLine: { secret: '_euy8cC2TRo.cwA.fdc.56ALnVMznKVrNu5gVjH1eSci_QtLnTIBkO5r9XFHFGo' },
+        user: { id: '93729a25-f861-4b85-89cd-79a4556f1a1b' },
+        bot: { id: 'BOT TI AeC' },
+        resize: 'detect'
+      }, document.getElementById("bot"));
+	</script>
+</body>
+</html>
+
+
+@*<html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title></title>
@@ -13,4 +36,4 @@
     <p>Describe your bot here and your terms of use etc.</p>
     <p>Visit <a href="https://www.botframework.com/">Bot Framework</a> to register your bot. When you register it, remember to set your bot's endpoint to <pre>https://<i>your_bots_hostname</i>/api/messages</pre></p>
 </body>
-</html>
+</html>*@
